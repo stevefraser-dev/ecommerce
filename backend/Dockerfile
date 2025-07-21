@@ -15,6 +15,7 @@ RUN CGO_ENABLED=0 go build -o webapp
 
 FROM alpine as web
 WORKDIR /
+COPY --from=cli /build/cmd/cli/cli /cli
 COPY --from=builder /build/cmd/web/webapp /webapp
 COPY layout layout
 RUN chmod +x /webapp
