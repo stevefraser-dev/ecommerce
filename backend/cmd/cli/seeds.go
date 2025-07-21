@@ -12,7 +12,7 @@ func newSeedsCmd(pc productCatalog) *cobra.Command {
 		Short: "populate the database with initial data",
 		RunE: func(cmd *cobra.Command, args []string) error {
 			ctx := cmd.Context()
-			for i := 0; i < 3; i++ {
+			for i := 0; i < 200; i++ {
 				pID := fmt.Sprintf("product-%d", i)
 				name := fmt.Sprintf("Product %d", i)
 				desc := fmt.Sprintf("Product %d", i)

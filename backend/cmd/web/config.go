@@ -20,7 +20,7 @@ func (pc postgresConfig) connectionString() string {
 	var conn string
 
 	if pc.Password != "" {
-		conn = fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable", pc.Host, pc.Port, pc.User, pc.Password, pc.Db)
+		conn = fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s", pc.Host, pc.Port, pc.User, pc.Password, pc.Db)
 	} else {
 		conn = fmt.Sprintf("host=%s port=%d user=%s dbname=%s sslmode=disable", pc.Host, pc.Port, pc.User, pc.Db)
 	}
