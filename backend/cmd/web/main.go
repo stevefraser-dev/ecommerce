@@ -30,7 +30,7 @@ const appName = "go-ecommerce"
 func main() {
 	err := godotenv.Load()
 	if err != nil {
-		log.Fatal("Error loading .env file")
+		log.Warn("No .env file found, using environment variables or defaults")
 	}
 
 	cfg := config{}
