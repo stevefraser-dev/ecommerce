@@ -16,4 +16,5 @@ RUN go build -o webapp
 FROM alpine as web
 WORKDIR /
 COPY --from=builder /build/cmd/web/webapp /webapp
+RUN chmod +x /webapp
 ENTRYPOINT ["/webapp"]
