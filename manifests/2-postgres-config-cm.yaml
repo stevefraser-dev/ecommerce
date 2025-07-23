@@ -1,0 +1,12 @@
+# ConfigMap for database configuration
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-config
+  namespace: ecommerce
+data:
+  POSTGRES_DB: ecommerce
+  POSTGRES_USER: postgres
+  POSTGRES_HOST_FQDN: sf-test-ecommerce.crcwcsq2ccnh.us-east-2.rds.amazonaws.com
+  POSTGRES_HOST: dbo-sf-test-ecommerce-7d8e9.castai-db-optimizer
+  POSTGRES_PORT: "5432"

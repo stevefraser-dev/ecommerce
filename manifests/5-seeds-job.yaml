@@ -1,0 +1,37 @@
+# Seeds Job (runs after migration)
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: seeds
+  namespace: ecommerce
+spec:
+  template:
+    spec:
+      containers:
+      - name: seeds
+        image: ghcr.io/steve-fraser/ecommerce/backend:master
+        command: ["/cli", "seeds"]
+        imagePullPolicy: Always
+        env:
+        - name: POSTGRES_USER
+          valueFrom:
+            configMapKeyRef:
+              name: postgres-config
+              key: POSTGRES_USER
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: postgres-secret
+              key: POSTGRES_PASSWORD
+        - name: POSTGRES_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: postgres-config
+              key: POSTGRES_HOST
+        - name: POSTGRES_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: postgres-config
+              key: POSTGRES_PORT
+      restartPolicy: OnFailure
+  backoffLimit: 4
